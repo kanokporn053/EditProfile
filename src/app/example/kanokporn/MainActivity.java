@@ -20,6 +20,13 @@ protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
 ViewMatching();
+
+
+//dbcontroler_109 bdDbcontroler_109= new dbcontroler_109(this);
+//bdDbcontroler_109.getWritableDatabase();
+
+
+
 }
 private void ViewMatching() {
 btn1 = (Button) findViewById(R.id.btnsave);

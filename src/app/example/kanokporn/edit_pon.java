@@ -1,6 +1,7 @@
 package app.example.kanokporn;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 public class edit_pon extends Activity implements OnClickListener {
 private Button btnsubmit;
 private EditText etxt1, etxt2, etxt3, etxt4, etxt5, etxt6, etxt7, etxt8;
@@ -32,6 +34,10 @@ etxt8 = (EditText) findViewById(R.id.etxt8);
 }
 @Override
 public void onClick(View v) {
+	
+	
+	save();
+		
 switch (v.getId()) {
 case R.id.btnsave:
 txt11 = (etxt1.getText().toString());
@@ -57,4 +63,30 @@ default:
 break;
 }
 }
+
+
+public boolean save(){
+	final AlertDialog.Builder ab = new AlertDialog.Builder(this);
+	AlertDialog vv = ab.create();
+	dbcontroler_109 dbclass = new dbcontroler_109(this);
+	long savedata = dbclass.insertData(etxt1.getText().toString(),etxt2.getText().toString()
+			,etxt3.getText().toString(),etxt4.getText().toString(),etxt5.getText().toString()
+			,etxt6.getText().toString(),etxt7.getText().toString(),etxt8.getText().toString());
+			
+	if (savedata <= 0) {
+		vv.setMessage("Error !!!!");
+		vv.show();
+		return false;
+	}		
+			
+	Toast.makeText(getApplicationContext(), "Add Data Successfully",Toast.LENGTH_SHORT).show();
+	return true;
+
+	
+}
+
+
+
+
+
 }
